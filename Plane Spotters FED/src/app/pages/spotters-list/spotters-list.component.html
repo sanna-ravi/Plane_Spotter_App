@@ -1,0 +1,22 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    
+</div>
+<div class="container-fluid mt--7">
+    <!-- Table -->
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Spotters List</h3>
+                </div>
+                <div class="table-responsive">
+
+                    <ng2-smart-table class="table table-bordered" [settings]="settings" [source]="data"
+                    (create)="onAdd($event)" (edit)=onEdit($event) (delete)=onDelete($event) >
+                    </ng2-smart-table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

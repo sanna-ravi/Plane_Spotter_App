@@ -1,0 +1,119 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+
+</div>
+<div class="container-fluid mt--7">
+    <!-- Table -->
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Spotters Manage</h3>
+                </div>
+                <form class="row col-md-12" [formGroup]="spotterForm" (ngSubmit)="onSubmitForm()">
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="required">Make</label>
+                            <input class="form-control" formControlName="Make" [(ngModel)]="model.make">
+                            <small class="text-danger"
+                                *ngIf="checkForm  && spotterForm.controls.Make.errors?.required">Make is
+                                required</small>
+                            <small class="text-danger"
+                                *ngIf="checkForm  && spotterForm.controls.Make.errors?.maxLength">Maximum lenght of Make
+                                is
+                                should not exceed 128 characters</small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="required">Model</label>
+                            <input class="form-control" formControlName="Model"  [(ngModel)]="model.model">
+                            <small class="text-danger"
+                                *ngIf="checkForm  && spotterForm.controls.Model.errors?.required">Model is
+                                required</small>
+                            <small class="text-danger"
+                                *ngIf="checkForm  && spotterForm.controls.Model.errors?.maxLength">Maximum lenght of
+                                Model is
+                                should not exceed 128 characters</small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="required">Registration</label>
+                            <input class="form-control" formControlName="Registration" [(ngModel)]="model.registration">
+                            <small class="text-danger"
+                                *ngIf="checkForm  && spotterForm.controls.Registration.errors?.required">Registration is
+                                required</small>
+                            <small class="text-danger"
+                                *ngIf="checkForm  && spotterForm.controls.Registration.errors?.pattern">Registration is
+                                invalid</small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="required">Location</label>
+                            <input class="form-control" formControlName="Location" [(ngModel)]="model.location">
+                            <small class="text-danger"
+                                *ngIf="checkForm  && spotterForm.controls.Location.errors?.required">Location is
+                                required</small>
+                            <small class="text-danger"
+                                *ngIf="checkForm  && spotterForm.controls.Location.errors?.maxLength">Maximum lenght of
+                                Location is
+                                should not exceed 128 characters</small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="required">Spotter Image</label>
+                            <input type="file" (change)="fileChange(SpotterImage)" accept='image/*' #SpotterImage
+                                class="img-upload-btn" />
+
+                            <button (click)="SpotterImage.click()" class="btn btn-info btn-block rounded-0 image-btn"
+                                type="button">
+                                <span><i class="fa fa-upload"></i> Image </span>
+                            </button>
+
+                            <div class="card images-container" (files)="filesDropped($event)"
+                                (click)="StockImage.click()">
+                                <span *ngIf="!image && !imageUrl" (files)="filesDropped($event)"
+                                    class="fa fa-upload upload-ico"></span>
+                                <div *ngIf="image || imageUrl" class="m-image-wrapper">
+                                    <i *ngIf="image" class="fa fa-times m-delete-img"
+                                        (click)="removeImage(StockImage)"></i>
+                                    <img *ngIf="image" [attr.src]="image" />
+                                    <img *ngIf="imageUrl && !image" [attr.src]="imageUrl" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="required">DateandTime</label>
+                            <input class="form-control datepicker" formControlName="DateandTime"
+                                placeholder="Select date" name="dp" ngbDatepicker #d="ngbDatepicker" [(ngModel)]="dateandTime"
+                                (click)="d.toggle()" type="text"  [maxDate]="maxDate">
+                            <small class="text-danger"
+                                *ngIf="checkForm  && spotterForm.controls.DateandTime.errors?.required">Location is
+                                required</small>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <button class="btn btn-gray float-right w-100p mb-1 mr-1" type="submit"
+                            (click)="resetForm()">Cancel</button>
+                        <button class="btn btn-success float-right w-100p mb-1 mr-1 mr-10" type="submit"
+                            [disabled]="isSubmitted">Update</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

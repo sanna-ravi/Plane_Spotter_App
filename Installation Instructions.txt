@@ -1,0 +1,14 @@
+Installation Instruction
+
+Running Asp.Net Core API
+please change database connection string in appsettings.Development.json located in "Plane Spotters API\Spotters\Spotters.API"
+
+Running Angular FED Application
+Navigate to "Plane Spotters FED" directory
+Run "npm install" to install the dependencies of the application
+Run "ng serve -o" to run the application
+
+Default Creadentials
+Username: admin1@gmail.com
+Password: 3IW5AtFst13f
+
